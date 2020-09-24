@@ -6,10 +6,10 @@ import (
 	"strings"
 	"sync"
 	"encoding/json"
-	"github.com/zuijinbuzai/fundtop/api/types"
-	"github.com/zuijinbuzai/fundtop/utils/fundutils"
-	"github.com/zuijinbuzai/fundtop/utils/httputils"
-	"github.com/zuijinbuzai/fundtop/utils"
+	"github.com/dengbzh/fundtop/api/types"
+	"github.com/dengbzh/fundtop/utils/fundutils"
+	"github.com/dengbzh/fundtop/utils/httputils"
+	"github.com/dengbzh/fundtop/utils"
 )
 
 /**

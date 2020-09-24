@@ -2,7 +2,7 @@ package api
 
 import (
 	"github.com/bradfitz/slice"
-	"github.com/zuijinbuzai/fundtop/api/types"
+	"github.com/dengbzh/fundtop/api/types"
 )
 
 func SortByZf(data *[]*types.Fund) {

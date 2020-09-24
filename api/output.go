@@ -2,8 +2,8 @@ package api
 
 import (
 	"fmt"
-	"github.com/zuijinbuzai/fundtop/api/types"
-	"github.com/zuijinbuzai/fundtop/utils"
+	"github.com/dengbzh/fundtop/api/types"
+	"github.com/dengbzh/fundtop/utils"
 )
 
 func markRank(mapData []*types.Fund) {

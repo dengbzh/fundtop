@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"github.com/zuijinbuzai/fundtop/api"
+	"github.com/dengbzh/fundtop/api"
 )
 
 func main() {

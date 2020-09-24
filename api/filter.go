@@ -1,7 +1,7 @@
 package api
 
 import (
-	"github.com/zuijinbuzai/fundtop/api/types"
+	"github.com/dengbzh/fundtop/api/types"
 	"strings"
 )
 

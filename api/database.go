@@ -1,9 +1,9 @@
 package api
 
 import (
-	"github.com/coreos/bbolt"
+	"go.etcd.io/bbolt"
 	"fmt"
-	"github.com/zuijinbuzai/fundtop/api/types"
+	"github.com/dengbzh/fundtop/api/types"
 	"time"
 	"os"
 	"encoding/json"
@@ -15,13 +15,13 @@ const (
 )
 
 var (
-	db			*bolt.DB
+	db			*bbolt.DB
 	tableName 	string
 )
 
 func DBOpen() {
 	var err error
-	db, err = bolt.Open(DB_PATH, 0600, nil)
+	db, err = bbolt.Open(DB_PATH, 0600, nil)
 	if err != nil {
 		return
 	}
@@ -31,7 +31,7 @@ func DBOpen() {
 	//fmt.Println(tableName)
 
 	exist := true
-	err = db.Update(func(tx *bolt.Tx) error {
+	err = db.Update(func(tx *bbolt.Tx) error {
 		bucket := tx.Bucket([]byte(tableName))
 		if bucket == nil {
 			exist = false
@@ -42,11 +42,11 @@ func DBOpen() {
 	if !exist {
 		db.Close()
 		os.Remove(DB_PATH)
-		db, err = bolt.Open(DB_PATH, 0600, nil)
+		db, err = bbolt.Open(DB_PATH, 0600, nil)
 		if err != nil {
 			return
 		}
-		err = db.Update(func(tx *bolt.Tx) error {
+		err = db.Update(func(tx *bbolt.Tx) error {
 			_, err := tx.CreateBucketIfNotExists([]byte(tableName))
 			if err != nil {
 				return fmt.Errorf("create bucket: %s", err)
@@ -70,7 +70,7 @@ func DBPutArray(arr []*types.Fund) {
 
 func DBGet(code string) *[]*types.FundItem {
 	result := &[]*types.FundItem{}
-	err := db.View(func(tx *bolt.Tx) error {
+	err := db.View(func(tx *bbolt.Tx) error {
 		b := tx.Bucket([]byte(tableName))
 		data := b.Get([]byte(code))
 
